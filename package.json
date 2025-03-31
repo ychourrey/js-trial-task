@@ -4,7 +4,7 @@
   "description": "Erasys JavaScript Trial Task",
   "main": "index.js",
   "scripts": {
-    "start": "node ./index | bunyan"  
+    "start": "node ./index | bunyan"
   },
   "author": "erasys GmbH",
   "license": "ISC",
@@ -13,6 +13,7 @@
   },
   "dependencies": {
     "bunyan": "^1.8.15",
+    "cors": "^2.8.5",
     "express": "^4.21.2",
     "hashids": "^2.3.0",
     "lodash": "^4.17.21",
