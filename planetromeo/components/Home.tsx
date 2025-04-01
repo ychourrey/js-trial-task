@@ -1,13 +1,17 @@
 import React, { useEffect, useState } from 'react';
-import { FlatList, View, Text, StyleSheet, ActivityIndicator } from 'react-native';
+import { FlatList, View, StyleSheet, ActivityIndicator } from 'react-native';
 import { fetchSearch } from '../api/fetchSearch';
 import { fetchProfiles } from '../api/fetchProfiles';
 import UserCard from '../components/UserCard';
 import { User, Profile } from '../types';
 import { useResponsiveColumns } from '../utils/userResponsiveColumns';
 import { SORT_OPTIONS } from '../constants/apiConstants';
+import { useThemeContext } from '../theme/ThemeProvider';
+import ThemeToggle from '../components/ThemeToggle'; // 👈 new toggle with icons
+import Header from './Header'
 
 export default function Home() {
+  const { theme } = useThemeContext();
   const [users, setUsers] = useState<User[]>([]);
   const [profiles, setProfiles] = useState<Profile[]>([]);
   const [cursor, setCursor] = useState<string | null>(null);
@@ -15,23 +19,17 @@ export default function Home() {
   const [fetchingMore, setFetchingMore] = useState(false);
   const columns = useResponsiveColumns();
 
-  /***
-   * Load the users cards on the home page
-   * Add infinite scroll based on cursor value
-   */
   const loadUsers = async (nextCursor?: string) => {
     const isFirst = !nextCursor;
-    if (isFirst) setLoading(true);
-    else setFetchingMore(true);
+    isFirst ? setLoading(true) : setFetchingMore(true);
 
     try {
       const res = await fetchSearch(10, SORT_OPTIONS.DISTANCE, nextCursor);
-      const nextUsers = res.items;
-      const ids = nextUsers.map((u) => u.id);
+      const ids = res.items.map((u) => u.id);
       const prof = await fetchProfiles(ids);
 
-      setUsers(prev => [...prev, ...nextUsers]);
-      setProfiles(prev => [...prev, ...prof]);
+      setUsers((prev) => [...prev, ...res.items]);
+      setProfiles((prev) => [...prev, ...prof]);
       setCursor(res.cursors?.after || null);
     } catch (err) {
       console.error('Pagination error:', err);
@@ -40,19 +38,10 @@ export default function Home() {
     }
   };
 
-  /**
-   * initial load ; lifecycle with no dependency
-   */
   useEffect(() => {
     loadUsers();
   }, []);
 
-  /***
-   * Data enriching from the results of 
-   * Search Query(Base) and Profile query(Extra)
-   * Match data based on id
-   * And combine
-   */
   const enriched = users.map((u) => ({
     ...u,
     ...(profiles.find((p) => p.id === u.id) || {})
@@ -65,7 +54,9 @@ export default function Home() {
   };
 
   return (
-    <View style={styles.container}>
+    <View style={[styles.container, { backgroundColor: theme.background }]}>
+      <ThemeToggle />
+      <Header />
       {loading ? (
         <ActivityIndicator size="large" />
       ) : (
@@ -94,5 +85,5 @@ const styles = StyleSheet.create({
   row: {
     flex: 1,
     justifyContent: 'space-between',
-  }
+  },
 });

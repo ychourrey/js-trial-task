@@ -1,6 +1,11 @@
 import { BASE_URL } from '../config';
 import { Profile } from '../types';
 
+/**
+ * 
+ * @param ids 
+ * @returns 
+ */
 export async function fetchProfiles(ids: number[]) {
   if (!ids.length) return [];
 
