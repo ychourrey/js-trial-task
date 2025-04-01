@@ -1,13 +1,27 @@
-export type User={
+/**
+ * User Type
+ */
+export type User = {
     id: number;
     name: string;
+    headline: string;
     picture?: {
-        url?: string;
-        comment?: string;
+      url?: string;
+      comment?: string;
     };
-    last_login?: string
-};
+    location?: {
+      name?: string;
+      distance?: number;
+    };
+    personal?: {
+      age?: number;
+    };
+    last_login?: string;
+  };
 
+/***
+ * Profile Type
+ */
 export type Profile = {
     id: number;
     location?:{
@@ -19,6 +33,9 @@ export type Profile = {
     distance?: number;
 };
 
+/***
+ * Search Result Type
+ */
 export type SearchResult = {
     items: User[];
     total: number;
