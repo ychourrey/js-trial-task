@@ -1,10 +1,10 @@
-import { Dimensions } from 'react-native';
+import { useWindowDimensions } from 'react-native';
 
-export const useResponsiveColumns = () => {
-  const width = Dimensions.get('window').width;
+export function useResponsiveColumns() {
+  const { width } = useWindowDimensions();
 
-  if (width < 500) return 2;     // Phones
-  if (width < 800) return 3;     // Tablets
-  if (width < 1200) return 4;    // Desktop
-  return 6;
-};
+  if (width >= 1200) return 5;
+  if (width >= 992) return 4;
+  if (width >= 768) return 3;
+  return 2;
+}

@@ -1,6 +1,7 @@
 import { BASE_URL } from '../config';
 import { SearchResult } from '../types';
 import { SORT_OPTIONS, SortOption } from '../constants/apiConstants';
+import {ERROR_OPTIONS} from '../constants/errorConstants'
 
 /**
  * Fetch the list of users
@@ -18,12 +19,16 @@ export async function fetchSearch(
   const url = new URL(`${BASE_URL}/search`);
   url.searchParams.set('length', length.toString());
   url.searchParams.set('sorting', sort.toString());
+
+  /**
+   * Keep appending cursor to the search params
+   */
   if (cursor) {
     url.searchParams.set('cursor', cursor);
   }
 
   const res = await fetch(url.toString());
-  if (!res.ok) throw new Error('Failed to load search results');
+  if (!res.ok) throw new Error(ERROR_OPTIONS.failedToLoadSearch);
 
   return res.json();
 }

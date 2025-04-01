@@ -1,6 +1,6 @@
 import React from 'react';
 import { View, TouchableOpacity, StyleSheet } from 'react-native';
-import { useThemeContext } from '../theme/ThemeProvider';
+import { useThemeContext } from '../../theme/ThemeProvider';
 import { Feather } from '@expo/vector-icons';
 
 export default function ThemeToggle() {
@@ -9,7 +9,7 @@ export default function ThemeToggle() {
   return (
     <View style={styles.wrapper}>
       <TouchableOpacity onPress={toggleTheme} style={styles.button} accessibilityLabel="Toggle theme">
-        <Feather name={isDark ? 'moon' : 'sun'} size={20} color="#fff" />
+        <Feather name={isDark ? 'sun' : 'moon'} size={20} color="#fff" />
       </TouchableOpacity>
     </View>
   );
@@ -18,8 +18,8 @@ export default function ThemeToggle() {
 const styles = StyleSheet.create({
   wrapper: {
     position: 'absolute',
-    top: 12,
-    right: 12,
+    top: 50,
+    right: 20,
     zIndex: 99,
   },
   button: {

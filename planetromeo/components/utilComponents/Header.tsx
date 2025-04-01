@@ -1,6 +1,6 @@
 import React from 'react';
 import { Text, View, StyleSheet } from 'react-native';
-import { useThemeContext } from '../theme/ThemeProvider';
+import { useThemeContext } from '../../theme/ThemeProvider';
 
 const Header = () => {
   const { theme } = useThemeContext();
@@ -15,15 +15,15 @@ const Header = () => {
 };
 
 const styles = StyleSheet.create({
-    wrapper: {
-      alignItems: 'center',
-      paddingTop: 40,
-      paddingBottom: 12,
-    },
-    title: {
-      fontSize: 24,
-      fontWeight: 'bold',
-      letterSpacing: 0.5,
-    },
-  });
+  wrapper: {
+    alignItems: 'center',
+    paddingTop: 8,
+    paddingBottom: 4,
+  },
+  title: {
+    fontSize: 30,
+    fontWeight: 'bold',
+    letterSpacing: 0.5,
+  },
+});
 export default Header;

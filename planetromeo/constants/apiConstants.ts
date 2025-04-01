@@ -1,5 +1,5 @@
 /*
-* Keep all constants here
+* Keep all api related constants here
 */
 export const SORT_OPTIONS = {
     DISTANCE: 'DISTANCE',

@@ -1,26 +1,26 @@
 import React from "react";
-import { SafeAreaView, StatusBar } from "react-native";
+import { StyleSheet } from "react-native";
 import Home from "./components/Home";
-import { ThemeProvider, useThemeContext } from './theme/ThemeProvider';
+import { ThemeProvider } from './theme/ThemeProvider';
+import { SafeAreaProvider } from 'react-native-safe-area-context';
 
-export default function App() {
-  return (
-    <ThemeProvider>
-      <ThemedApp />
-    </ThemeProvider>
-  );
-}
 
 /**
  * Wrap the entire app under a theme for better personalisation
  * @returns Themed App
  */
-function ThemedApp() {
-  const { theme } = useThemeContext();
+export default function App() {
   return (
-    <SafeAreaView style={{ flex: 1, backgroundColor: theme.background }}>
-      <StatusBar barStyle="light-content" />
-      <Home />
-    </SafeAreaView>
+    <SafeAreaProvider>
+      <ThemeProvider>
+        <Home />
+      </ThemeProvider>
+    </SafeAreaProvider>
   );
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+  },
+});
