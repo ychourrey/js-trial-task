@@ -15,6 +15,10 @@ export default function Home() {
   const [fetchingMore, setFetchingMore] = useState(false);
   const columns = useResponsiveColumns();
 
+  /***
+   * Load the users cards on the home page
+   * Add infinite scroll based on cursor value
+   */
   const loadUsers = async (nextCursor?: string) => {
     const isFirst = !nextCursor;
     if (isFirst) setLoading(true);
@@ -36,10 +40,19 @@ export default function Home() {
     }
   };
 
+  /**
+   * initial load ; lifecycle with no dependency
+   */
   useEffect(() => {
-    loadUsers(); // initial load
+    loadUsers();
   }, []);
 
+  /***
+   * Data enriching from the results of 
+   * Search Query(Base) and Profile query(Extra)
+   * Match data based on id
+   * And combine
+   */
   const enriched = users.map((u) => ({
     ...u,
     ...(profiles.find((p) => p.id === u.id) || {})
