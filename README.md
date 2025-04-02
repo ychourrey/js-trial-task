@@ -4,7 +4,7 @@ First of all, thank you for this interesting and fun frontend assignment! It’s
 
 ---
 
-## 📂 Project Overview
+## 📂 Project Assumptions
 
 This repository is structured with a clear **separation of concerns** between the **backend** and the newly implemented **frontend UI**.
 
