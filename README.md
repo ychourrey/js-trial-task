@@ -11,7 +11,7 @@ This repository is structured with a clear **separation of concerns** between th
 ### 🔁 Assumption
 > The provided repo at [https://github.com/erasys/js-trial-task](https://github.com/erasys/js-trial-task) is assumed to be the **Backend-for-Frontend (BFF)** or API layer.
 
-Accordingly, all UI-related development is encapsulated under the new `planetromeo/` folder.
+Accordingly, all UI-related development is encapsulated under the new `planetromeo/` folder, which should be considered as independent going forward; a good approach would have been to encapsulate the existing code under a 'backend' folder, which I missed doing so.
 
 > ✅ **Note**: The original backend code under `/lib` and `/data` is **untouched**. A new project was created **side-by-side** as a sibling directory named `planetromeo` to represent the frontend.
 
