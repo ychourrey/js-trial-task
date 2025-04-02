@@ -1,6 +1,29 @@
 # 🌈 PlanetRomeo - JS Trial Task 📱
 
-### 👋🏼 First off, a big thanks to **erasys** for this interesting and thoughtfully crafted challenge!
+## 🙏 Thanks!
+First of all, thank you for this interesting and fun frontend assignment! It’s cleanly scoped and open-ended enough to express both engineering and design decisions.
+
+---
+
+## 📂 Project Overview
+
+This repository is structured with a clear **separation of concerns** between the **backend** and the newly implemented **frontend UI**.
+
+### 🔁 Assumption
+> The provided repo at [https://github.com/erasys/js-trial-task](https://github.com/erasys/js-trial-task) is assumed to be the **Backend-for-Frontend (BFF)** or API layer.
+
+Accordingly, all UI-related development is encapsulated under the new `planetromeo/` folder.
+
+> ✅ **Note**: The original backend code under `/lib` and `/data` is **untouched**. A new project was created **side-by-side** as a sibling directory named `planetromeo` to represent the frontend.
+
+---
+
+## 🌱 Why this separation?
+
+- Respect original codebase boundaries
+- Mimic real-world structure where frontend and backend evolve independently
+- Allow scalable and production-level frontend build setup (e.g., React Native + Expo)
+- Avoid breaking anything in the original assignment repo
 
 ---
 
