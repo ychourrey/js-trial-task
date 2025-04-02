@@ -1,6 +1,5 @@
 # 🌈 PlanetRomeo - JS Trial Task 📱
 
-## 🙏 Thanks!
 First of all, thank you for this interesting and fun frontend assignment! It’s cleanly scoped and open-ended enough to express both engineering and design decisions.
 
 ---
